@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/router/go_router.dart';
 import 'package:movie_app/core/theme/themes/light_theme.dart';
-import 'package:movie_app/features/authentication/presentation/pages/first_page.dart';
 import 'package:movie_app/firebase_options.dart';
 
 void main() async {

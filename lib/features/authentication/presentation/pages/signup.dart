@@ -15,10 +15,9 @@ class SignupPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final email =
-        ref.read(authenticationProvider(context).notifier).emailController;
+    final email = ref.read(authenticationProvider.notifier).emailController;
     final password =
-        ref.read(authenticationProvider(context).notifier).passwordController;
+        ref.read(authenticationProvider.notifier).passwordController;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -54,9 +53,8 @@ class SignupPage extends ConsumerWidget {
                 height: 60,
                 width: 360,
                 child: MyTextfield(
-                  controller: ref
-                      .read(authenticationProvider(context).notifier)
-                      .nameController,
+                  controller:
+                      ref.read(authenticationProvider.notifier).nameController,
                   hintText: Constants.textfieldName,
                   prefixxIcon:
                       Icon(Icons.person_outline_outlined, color: Colors.grey),
@@ -68,9 +66,8 @@ class SignupPage extends ConsumerWidget {
                 height: 60,
                 width: 360,
                 child: MyTextfield(
-                  controller: ref
-                      .read(authenticationProvider(context).notifier)
-                      .emailController,
+                  controller:
+                      ref.read(authenticationProvider.notifier).emailController,
                   hintText: Constants.textfieldEmail,
                   prefixxIcon: Icon(Icons.email_outlined, color: Colors.grey),
                 )),
@@ -81,9 +78,8 @@ class SignupPage extends ConsumerWidget {
                 height: 60,
                 width: 360,
                 child: MyTextfield(
-                  controller: ref
-                      .read(authenticationProvider(context).notifier)
-                      .phoneController,
+                  controller:
+                      ref.read(authenticationProvider.notifier).phoneController,
                   hintText: Constants.textfieldPhone,
                   prefixxIcon: Icon(Icons.phone_android, color: Colors.grey),
                 )),
@@ -95,7 +91,7 @@ class SignupPage extends ConsumerWidget {
                 width: 360,
                 child: MyTextfield(
                   controller: ref
-                      .read(authenticationProvider(context).notifier)
+                      .read(authenticationProvider.notifier)
                       .passwordController,
                   hintText: Constants.textfieldPassword,
                   prefixxIcon: Icon(Icons.fingerprint,
@@ -109,9 +105,9 @@ class SignupPage extends ConsumerWidget {
               buttonText: "SIGNUP",
               onPressed: () {
                 ref
-                    .read(authenticationProvider(context).notifier)
-                    .signupWithEmail(email.text, password.text);
-                ref.read(authenticationProvider(context).notifier).clear();
+                    .read(authenticationProvider.notifier)
+                    .signupWithEmail(context, email.text, password.text);
+                ref.read(authenticationProvider.notifier).clear();
               },
             ),
             SizedBox(

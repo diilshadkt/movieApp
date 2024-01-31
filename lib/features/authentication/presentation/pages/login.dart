@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -16,14 +15,11 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final email =
-        ref.read(authenticationProvider(context).notifier).emailController;
+    final email = ref.read(authenticationProvider.notifier).emailController;
     final password =
-        ref.read(authenticationProvider(context).notifier).passwordController;
-    final name =
-        ref.read(authenticationProvider(context).notifier).nameController;
-    final phone =
-        ref.read(authenticationProvider(context).notifier).phoneController;
+        ref.read(authenticationProvider.notifier).passwordController;
+    final name = ref.read(authenticationProvider.notifier).nameController;
+    final phone = ref.read(authenticationProvider.notifier).phoneController;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -57,9 +53,8 @@ class LoginPage extends ConsumerWidget {
                 height: 60,
                 width: 360,
                 child: MyTextfield(
-                  controller: ref
-                      .read(authenticationProvider(context).notifier)
-                      .emailController,
+                  controller:
+                      ref.read(authenticationProvider.notifier).emailController,
                   hintText: Constants.textfieldEmail,
                   prefixxIcon: Icon(Icons.email_outlined, color: Colors.grey),
                 )),
@@ -71,7 +66,7 @@ class LoginPage extends ConsumerWidget {
                 width: 360,
                 child: MyTextfield(
                   controller: ref
-                      .read(authenticationProvider(context).notifier)
+                      .read(authenticationProvider.notifier)
                       .passwordController,
                   hintText: Constants.textfieldPassword,
                   prefixxIcon: Icon(Icons.fingerprint,
@@ -83,23 +78,31 @@ class LoginPage extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(left: 250),
               child: ForgetPasswordButton(
-                  buttonText: "Forgot Password", onPressed: () {}),
+                  buttonText: "Forgot Password",
+                  onPressed: () {
+                    context.push("/resetPasswordPage");
+                  }),
             ),
             SizedBox(
               height: AppTheme.of(context).spaces.space_50,
             ),
             SignupLoginButton(
-              buttonText: "LOGIN",
-              onPressed: () {
-                if (FirebaseAuth.instance.currentUser != null) {
+                buttonText: "LOGIN",
+                onPressed: () {
                   ref
-                      .read(authenticationProvider(context).notifier)
-                      .signinWithEmail(email.text, password.text);
-                } else {
-                  context.go("/");
+                      .read(authenticationProvider.notifier)
+                      .signupWithEmail(context, email.text, password.text);
                 }
-              },
-            ),
+                // {
+                //   if (FirebaseAuth.instance.currentUser != null) {
+                //     ref
+                //         .read(authenticationProvider(context).notifier)
+                //         .signinWithEmail(email.text, password.text);
+                //   } else {
+                //     context.go("/");
+                //   }
+                // },
+                ),
             SizedBox(
               height: AppTheme.of(context).spaces.space_250,
             ),
@@ -111,11 +114,21 @@ class LoginPage extends ConsumerWidget {
               height: AppTheme.of(context).spaces.space_250,
             ),
             GoogleSignupButton(onTap: () {
-              context.go('/');
+              ref
+                  .read(authenticationProvider.notifier)
+                  .signinWithGoogle(context);
             }),
             SizedBox(
               height: AppTheme.of(context).spaces.space_200,
             ),
+            IconButton(
+                onPressed: () {
+                  context.go("/phoneNumberLoginPage");
+                },
+                icon: Icon(
+                  Icons.phone,
+                  size: 30,
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

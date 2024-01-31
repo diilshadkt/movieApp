@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,8 +13,8 @@ class SignOutButton extends ConsumerWidget {
     return ElevatedButton(
         onPressed: () {
           if (FirebaseAuth.instance.currentUser != null) {
-            ref.read(authenticationProvider(context).notifier).signout();
-            context.go("/login");
+            ref.read(authenticationProvider.notifier).signout(context);
+            context.go("/firstpage");
           }
         },
         child: Icon(Icons.logout));

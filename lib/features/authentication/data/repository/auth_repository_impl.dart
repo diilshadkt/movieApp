@@ -27,7 +27,27 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> emailVerification() async {
-    await dataSource.sendEmailVerification();
+    await dataSource.emailVerification();
+  }
+
+  @override
+  Future<void> signinWithGoogle() async {
+    await dataSource.signinWithGoogle();
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    return await dataSource.resetPassword(email);
+  }
+
+  @override
+  Future<(String, int?)> verifyPhoneNumber(String number) async {
+    return await dataSource.verifyPhoneNumber(number);
+  }
+
+  @override
+  Future<void> verifyOtp(String verificationId, String otp) async {
+    await dataSource.verifyOtp(verificationId, otp);
   }
 }
 

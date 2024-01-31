@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/theme/themes/app_theme.dart';
-import 'package:movie_app/features/authentication/presentation/pages/first_page.dart';
 
 class GoogleSignupButton extends StatelessWidget {
   final void Function() onTap;
