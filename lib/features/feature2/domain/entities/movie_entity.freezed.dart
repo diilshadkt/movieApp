@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MovieEntity {
+  int get id => throw _privateConstructorUsedError;
   String get originalTitle => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   String get posterPath => throw _privateConstructorUsedError;
@@ -36,7 +37,8 @@ abstract class $MovieEntityCopyWith<$Res> {
       _$MovieEntityCopyWithImpl<$Res, MovieEntity>;
   @useResult
   $Res call(
-      {String originalTitle,
+      {int id,
+      String originalTitle,
       String overview,
       String posterPath,
       String title,
@@ -58,6 +60,7 @@ class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? originalTitle = null,
     Object? overview = null,
     Object? posterPath = null,
@@ -67,6 +70,10 @@ class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
     Object? voteAverage = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       originalTitle: null == originalTitle
           ? _value.originalTitle
           : originalTitle // ignore: cast_nullable_to_non_nullable
@@ -108,7 +115,8 @@ abstract class _$$MovieEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String originalTitle,
+      {int id,
+      String originalTitle,
       String overview,
       String posterPath,
       String title,
@@ -128,6 +136,7 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? originalTitle = null,
     Object? overview = null,
     Object? posterPath = null,
@@ -137,6 +146,10 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
     Object? voteAverage = null,
   }) {
     return _then(_$MovieEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       originalTitle: null == originalTitle
           ? _value.originalTitle
           : originalTitle // ignore: cast_nullable_to_non_nullable
@@ -173,7 +186,8 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
 
 class _$MovieEntityImpl implements _MovieEntity {
   _$MovieEntityImpl(
-      {required this.originalTitle,
+      {required this.id,
+      required this.originalTitle,
       required this.overview,
       required this.posterPath,
       required this.title,
@@ -181,6 +195,8 @@ class _$MovieEntityImpl implements _MovieEntity {
       required this.language,
       required this.voteAverage});
 
+  @override
+  final int id;
   @override
   final String originalTitle;
   @override
@@ -198,7 +214,7 @@ class _$MovieEntityImpl implements _MovieEntity {
 
   @override
   String toString() {
-    return 'MovieEntity(originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, title: $title, releaseDate: $releaseDate, language: $language, voteAverage: $voteAverage)';
+    return 'MovieEntity(id: $id, originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, title: $title, releaseDate: $releaseDate, language: $language, voteAverage: $voteAverage)';
   }
 
   @override
@@ -206,6 +222,7 @@ class _$MovieEntityImpl implements _MovieEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MovieEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.originalTitle, originalTitle) ||
                 other.originalTitle == originalTitle) &&
             (identical(other.overview, overview) ||
@@ -222,7 +239,7 @@ class _$MovieEntityImpl implements _MovieEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, originalTitle, overview,
+  int get hashCode => Object.hash(runtimeType, id, originalTitle, overview,
       posterPath, title, releaseDate, language, voteAverage);
 
   @JsonKey(ignore: true)
@@ -234,7 +251,8 @@ class _$MovieEntityImpl implements _MovieEntity {
 
 abstract class _MovieEntity implements MovieEntity {
   factory _MovieEntity(
-      {required final String originalTitle,
+      {required final int id,
+      required final String originalTitle,
       required final String overview,
       required final String posterPath,
       required final String title,
@@ -242,6 +260,8 @@ abstract class _MovieEntity implements MovieEntity {
       required final String language,
       required final double voteAverage}) = _$MovieEntityImpl;
 
+  @override
+  int get id;
   @override
   String get originalTitle;
   @override

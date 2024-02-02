@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/features/authentication/presentation/pages/login.dart';
 import 'package:movie_app/features/authentication/presentation/pages/otp_page.dart';
@@ -6,6 +7,7 @@ import 'package:movie_app/features/authentication/presentation/pages/phonenumber
 import 'package:movie_app/features/authentication/presentation/pages/reset_password_page.dart';
 import 'package:movie_app/features/authentication/presentation/pages/signup.dart';
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
+import 'package:movie_app/features/feature2/presentation/pages/favourite_page.dart';
 import 'package:movie_app/features/feature2/presentation/pages/home.dart';
 import 'package:movie_app/features/feature2/presentation/pages/overview_page.dart';
 import 'package:movie_app/features/feature2/presentation/pages/profile_page.dart';
@@ -15,7 +17,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
         path: "/",
-        builder: (context, state) => const HomePage(),
+        builder: (context, state) => HomePage(),
         redirect: (context, state) {
           final user = FirebaseAuth.instance.currentUser;
           if (user == null || !user.emailVerified && user.phoneNumber == null) {
@@ -53,6 +55,10 @@ final router = GoRouter(
     GoRoute(
       path: "/otpPage",
       builder: (context, state) => OtpPage(),
+    ),
+    GoRoute(
+      path: "/favouritePage",
+      builder: (context, state) => FavouritePage(),
     )
   ],
 );

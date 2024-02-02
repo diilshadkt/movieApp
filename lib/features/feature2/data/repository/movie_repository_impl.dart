@@ -18,6 +18,7 @@ class MovieRepositoryImpl implements MovieRepository {
     results = [
       for (final result in data.results)
         MovieEntity(
+            id: result.id,
             originalTitle: result.originalTitle,
             overview: result.overview,
             posterPath: result.posterPath,

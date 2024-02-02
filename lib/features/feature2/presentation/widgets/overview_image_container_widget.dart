@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/theme/themes/app_theme.dart';
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
+import 'package:movie_app/features/feature2/presentation/providers/movie_provider.dart';
 
-class OverviewImageContainerWidget extends StatelessWidget {
+class OverviewImageContainerWidget extends ConsumerWidget {
   final MovieEntity entity;
   final imagePath = "https://image.tmdb.org/t/p/w500";
   const OverviewImageContainerWidget({super.key, required this.entity});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Stack(children: [
       Container(
         width: MediaQuery.sizeOf(context).width / 1,
@@ -42,7 +44,9 @@ class OverviewImageContainerWidget extends StatelessWidget {
             backgroundColor: Colors.black.withOpacity(0.40),
             radius: 25,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(getMoviesProvider.notifier).addToFireStore(entity);
+                },
                 icon: Icon(
                   Icons.favorite_border,
                   color: Colors.white,

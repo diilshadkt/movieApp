@@ -4,6 +4,7 @@ part 'movie_entity.freezed.dart';
 @freezed
 class MovieEntity with _$MovieEntity {
   factory MovieEntity({
+    required int id,
     required String originalTitle,
     required String overview,
     required String posterPath,
