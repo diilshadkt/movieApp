@@ -6,4 +6,5 @@ class OverViewConstants {
       "assets/images/language_logo-removebg-preview.png";
 
   static const synopsis = "SYNOPSIS";
+  static const addReview = "Add your review....";
 }

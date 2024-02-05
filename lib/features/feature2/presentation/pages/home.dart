@@ -39,14 +39,15 @@ class HomePage extends ConsumerWidget {
         child: switch (ref.watch(getMoviesProvider)) {
           AsyncData(:final value) => Column(children: [
               CarouselSlider.builder(
-                  itemCount: value.length,
+                  itemCount: value.movies.length,
                   itemBuilder: (context, index, realIndex) {
                     return Padding(
                       padding: EdgeInsets.only(
                           top: AppTheme.of(context).spaces.space_125),
                       child: InkWell(
                         onTap: () {
-                          context.push("/overviewPage", extra: value[index]);
+                          context.push("/overviewPage",
+                              extra: value.movies[index]);
                         },
                         child: Container(
                           height: 400,
@@ -54,7 +55,8 @@ class HomePage extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  imageBasePath + value[index].posterPath,
+                                  imageBasePath +
+                                      value.movies[index].posterPath,
                                 ),
                                 fit: BoxFit.fill,
                               )),
@@ -93,8 +95,7 @@ class HomePage extends ConsumerWidget {
                 padding: EdgeInsets.all(AppTheme.of(context).spaces.space_125),
                 child: Container(
                   height: 350,
-                  child:
-                      GridViewWidget(movieList: value, itemCount: value.length),
+                  child: GridViewWidget(movieList: value.movies),
                 ),
               )
             ]),

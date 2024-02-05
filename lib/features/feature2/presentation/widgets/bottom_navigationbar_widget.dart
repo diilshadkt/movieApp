@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/features/feature2/presentation/pages/search_page.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({super.key});
@@ -28,7 +29,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(SearchPage.routePath);
+                  },
                   icon: Icon(
                     Icons.search,
                     color: Colors.black,

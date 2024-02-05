@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/theme/themes/app_theme.dart';
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/feature2/presentation/providers/movie_provider.dart';
@@ -29,7 +30,9 @@ class OverviewImageContainerWidget extends ConsumerWidget {
             backgroundColor: Colors.black.withOpacity(0.40),
             radius: 25,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.go("/");
+                },
                 icon: Icon(
                   Icons.keyboard_arrow_left,
                   size: 30,

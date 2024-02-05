@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/features/authentication/presentation/pages/login.dart';
 import 'package:movie_app/features/authentication/presentation/pages/otp_page.dart';
@@ -11,6 +10,7 @@ import 'package:movie_app/features/feature2/presentation/pages/favourite_page.da
 import 'package:movie_app/features/feature2/presentation/pages/home.dart';
 import 'package:movie_app/features/feature2/presentation/pages/overview_page.dart';
 import 'package:movie_app/features/feature2/presentation/pages/profile_page.dart';
+import 'package:movie_app/features/feature2/presentation/pages/search_page.dart';
 
 final router = GoRouter(
   initialLocation: "/",
@@ -59,6 +59,10 @@ final router = GoRouter(
     GoRoute(
       path: "/favouritePage",
       builder: (context, state) => FavouritePage(),
-    )
+    ),
+    GoRoute(
+      path: SearchPage.routePath,
+      builder: (context, state) => SearchPage(),
+    ),
   ],
 );

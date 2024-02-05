@@ -246,7 +246,7 @@ mixin _$Result {
   @JsonKey(name: "adult")
   bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: "backdrop_path")
-  String get backdropPath => throw _privateConstructorUsedError;
+  String? get backdropPath => throw _privateConstructorUsedError;
   @JsonKey(name: "genre_ids")
   List<int> get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: "id")
@@ -260,7 +260,7 @@ mixin _$Result {
   @JsonKey(name: "popularity")
   double get popularity => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_path")
-  String get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: "release_date")
   DateTime get releaseDate => throw _privateConstructorUsedError;
   @JsonKey(name: "title")
@@ -284,14 +284,14 @@ abstract class $ResultCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "adult") bool adult,
-      @JsonKey(name: "backdrop_path") String backdropPath,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
       @JsonKey(name: "genre_ids") List<int> genreIds,
       @JsonKey(name: "id") int id,
       @JsonKey(name: "original_language") String originalLanguage,
       @JsonKey(name: "original_title") String originalTitle,
       @JsonKey(name: "overview") String overview,
       @JsonKey(name: "popularity") double popularity,
-      @JsonKey(name: "poster_path") String posterPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "release_date") DateTime releaseDate,
       @JsonKey(name: "title") String title,
       @JsonKey(name: "video") bool video,
@@ -313,14 +313,14 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
   @override
   $Res call({
     Object? adult = null,
-    Object? backdropPath = null,
+    Object? backdropPath = freezed,
     Object? genreIds = null,
     Object? id = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
     Object? popularity = null,
-    Object? posterPath = null,
+    Object? posterPath = freezed,
     Object? releaseDate = null,
     Object? title = null,
     Object? video = null,
@@ -332,10 +332,10 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
               as bool,
-      backdropPath: null == backdropPath
+      backdropPath: freezed == backdropPath
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genreIds: null == genreIds
           ? _value.genreIds
           : genreIds // ignore: cast_nullable_to_non_nullable
@@ -360,10 +360,10 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
               as double,
-      posterPath: null == posterPath
+      posterPath: freezed == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       releaseDate: null == releaseDate
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
@@ -397,14 +397,14 @@ abstract class _$$ResultImplCopyWith<$Res> implements $ResultCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "adult") bool adult,
-      @JsonKey(name: "backdrop_path") String backdropPath,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
       @JsonKey(name: "genre_ids") List<int> genreIds,
       @JsonKey(name: "id") int id,
       @JsonKey(name: "original_language") String originalLanguage,
       @JsonKey(name: "original_title") String originalTitle,
       @JsonKey(name: "overview") String overview,
       @JsonKey(name: "popularity") double popularity,
-      @JsonKey(name: "poster_path") String posterPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "release_date") DateTime releaseDate,
       @JsonKey(name: "title") String title,
       @JsonKey(name: "video") bool video,
@@ -424,14 +424,14 @@ class __$$ResultImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adult = null,
-    Object? backdropPath = null,
+    Object? backdropPath = freezed,
     Object? genreIds = null,
     Object? id = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
     Object? popularity = null,
-    Object? posterPath = null,
+    Object? posterPath = freezed,
     Object? releaseDate = null,
     Object? title = null,
     Object? video = null,
@@ -443,10 +443,10 @@ class __$$ResultImplCopyWithImpl<$Res>
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
               as bool,
-      backdropPath: null == backdropPath
+      backdropPath: freezed == backdropPath
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genreIds: null == genreIds
           ? _value._genreIds
           : genreIds // ignore: cast_nullable_to_non_nullable
@@ -471,10 +471,10 @@ class __$$ResultImplCopyWithImpl<$Res>
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
               as double,
-      posterPath: null == posterPath
+      posterPath: freezed == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       releaseDate: null == releaseDate
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
@@ -527,7 +527,7 @@ class _$ResultImpl implements _Result {
   final bool adult;
   @override
   @JsonKey(name: "backdrop_path")
-  final String backdropPath;
+  final String? backdropPath;
   final List<int> _genreIds;
   @override
   @JsonKey(name: "genre_ids")
@@ -554,7 +554,7 @@ class _$ResultImpl implements _Result {
   final double popularity;
   @override
   @JsonKey(name: "poster_path")
-  final String posterPath;
+  final String? posterPath;
   @override
   @JsonKey(name: "release_date")
   final DateTime releaseDate;
@@ -642,7 +642,7 @@ class _$ResultImpl implements _Result {
 abstract class _Result implements Result {
   factory _Result(
           {@JsonKey(name: "adult") required final bool adult,
-          @JsonKey(name: "backdrop_path") required final String backdropPath,
+          @JsonKey(name: "backdrop_path") required final String? backdropPath,
           @JsonKey(name: "genre_ids") required final List<int> genreIds,
           @JsonKey(name: "id") required final int id,
           @JsonKey(name: "original_language")
@@ -650,7 +650,7 @@ abstract class _Result implements Result {
           @JsonKey(name: "original_title") required final String originalTitle,
           @JsonKey(name: "overview") required final String overview,
           @JsonKey(name: "popularity") required final double popularity,
-          @JsonKey(name: "poster_path") required final String posterPath,
+          @JsonKey(name: "poster_path") required final String? posterPath,
           @JsonKey(name: "release_date") required final DateTime releaseDate,
           @JsonKey(name: "title") required final String title,
           @JsonKey(name: "video") required final bool video,
@@ -665,7 +665,7 @@ abstract class _Result implements Result {
   bool get adult;
   @override
   @JsonKey(name: "backdrop_path")
-  String get backdropPath;
+  String? get backdropPath;
   @override
   @JsonKey(name: "genre_ids")
   List<int> get genreIds;
@@ -686,7 +686,7 @@ abstract class _Result implements Result {
   double get popularity;
   @override
   @JsonKey(name: "poster_path")
-  String get posterPath;
+  String? get posterPath;
   @override
   @JsonKey(name: "release_date")
   DateTime get releaseDate;

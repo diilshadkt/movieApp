@@ -1,4 +1,8 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:developer';
+
+import 'package:flutter/widgets.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movie_app/core/utils/snackbar.dart';
 import 'package:movie_app/features/feature2/data/repository/comment_repository_impl.dart';
 import 'package:movie_app/features/feature2/data/repository/firebase_repository_impl.dart';
 import 'package:movie_app/features/feature2/data/repository/movie_repository_impl.dart';
@@ -6,12 +10,14 @@ import 'package:movie_app/features/feature2/domain/entities/comment_entity.dart'
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/feature2/domain/repository/comment_repository.dart';
 import 'package:movie_app/features/feature2/domain/repository/movie_repository.dart';
-import 'package:movie_app/features/feature2/domain/usecases/comment_usecases/add_comment_usecase.dart';
-import 'package:movie_app/features/feature2/domain/usecases/comment_usecases/get_comment_usecase.dart';
-import 'package:movie_app/features/feature2/domain/usecases/firebase_usecases/add_to_firebase_usecase.dart';
-import 'package:movie_app/features/feature2/domain/usecases/firebase_usecases/delete_to_firebase_usecase.dart';
-import 'package:movie_app/features/feature2/domain/usecases/firebase_usecases/get_from_firebase_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/add_comment_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/get_comment_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/add_to_firebase_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/delete_to_firebase_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/get_from_firebase_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/movie_usecases.dart';
+import 'package:movie_app/features/feature2/domain/usecases/search_movie_usecase.dart';
+import 'package:movie_app/features/feature2/presentation/providers/provider_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'movie_provider.g.dart';
@@ -23,9 +29,11 @@ class GetMovies extends _$GetMovies {
   late final CommentEntity entity2;
   late final CommentRepository repository2;
   @override
-  Future<List<MovieEntity>> build() async {
-    repository = ref.watch(movieRepositoryProvider);
-    return MovieUsecases(repository: repository)();
+  Future<ProviderState> build() async {
+    return ProviderState(
+        movies: await MovieUsecases(
+            repository: ref.watch(movieRepositoryProvider))(),
+        search: null);
   }
 
 //favourite
@@ -53,5 +61,18 @@ class GetMovies extends _$GetMovies {
   Stream<List<CommentEntity>> getComment(String id) {
     final repository = ref.watch(commentRepositoryProvider);
     return GetCommentUsecase(repository: repository)(id);
+  }
+
+  //search
+  Future<void> searchMovies(String text, BuildContext context) async {
+    try {
+      final repository = ref.watch(movieRepositoryProvider);
+      final data = await SearchMovieUsecase(repository: repository)(text);
+      state = AsyncValue.data(state.value!.copyWith(search: data));
+    } on Exception catch (e) {
+      log(e.toString());
+      Future.sync(
+          () => SnackbarUtils.showSnackbarMessage(context, e.toString()));
+    }
   }
 }

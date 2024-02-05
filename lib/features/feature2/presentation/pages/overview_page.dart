@@ -11,7 +11,8 @@ import 'package:movie_app/features/feature2/presentation/widgets/synopsis_overvi
 class OverviewPage extends ConsumerWidget {
   final MovieEntity entity;
   final imagePath = "https://image.tmdb.org/t/p/w500";
-  const OverviewPage({super.key, required this.entity});
+  final controller = TextEditingController();
+  OverviewPage({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,8 +38,10 @@ class OverviewPage extends ConsumerWidget {
                 color: Color.fromARGB(255, 89, 88, 88),
               ),
             ),
-            SizedBox(
-              height: 40,
+
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: ReviewWidget(reviewController: controller, entity: entity),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 290, bottom: 14),
@@ -54,7 +57,6 @@ class OverviewPage extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SeeMoreWidget(text: entity.overview),
             ),
-            ReviewWidget()
           ],
         ),
       ),

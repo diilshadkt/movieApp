@@ -16,16 +16,35 @@ class MovieRepositoryImpl implements MovieRepository {
 
     late List<MovieEntity> results;
     results = [
-      for (final result in data.results)
+      for (var result in data.results)
         MovieEntity(
             id: result.id,
             originalTitle: result.originalTitle,
             overview: result.overview,
-            posterPath: result.posterPath,
+            posterPath: result.posterPath ?? "no image",
             title: result.title,
             voteAverage: result.voteAverage,
             language: result.originalLanguage,
             releaseDate: result.releaseDate),
+    ];
+    return results;
+  }
+
+  @override
+  Future<List<MovieEntity>> searchMovies(String text) async {
+    final data = await datasource.searchMovies(text);
+    late List<MovieEntity> results;
+    results = [
+      for (var result in data.results)
+        (MovieEntity(
+            id: result.id,
+            originalTitle: result.originalTitle,
+            overview: result.overview,
+            posterPath: result.posterPath ?? 'no image',
+            title: result.title,
+            voteAverage: result.voteAverage,
+            language: result.originalLanguage,
+            releaseDate: result.releaseDate)),
     ];
     return results;
   }

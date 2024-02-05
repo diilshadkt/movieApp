@@ -5,9 +5,7 @@ import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
 class GridViewWidget extends StatelessWidget {
   final imagePath = "https://image.tmdb.org/t/p/w500";
   final List<MovieEntity> movieList;
-  final int itemCount;
-  const GridViewWidget(
-      {super.key, required this.movieList, required this.itemCount});
+  const GridViewWidget({super.key, required this.movieList});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class GridViewWidget extends StatelessWidget {
           mainAxisSpacing: 5,
           crossAxisSpacing: 5,
           mainAxisExtent: 336),
-      itemCount: itemCount,
+      itemCount: movieList.length,
       itemBuilder: (context, index) {
         return Container(
           decoration: BoxDecoration(
