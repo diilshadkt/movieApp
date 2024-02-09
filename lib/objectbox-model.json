@@ -1,0 +1,146 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:8224761760682669379",
+      "lastPropertyId": "11:4089277704294389074",
+      "name": "ObjectBoxEntityModel",
+      "properties": [
+        {
+          "id": "1:8043411241010775679",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6599644466038338755",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "3:4074209934407828469",
+          "name": "movieId",
+          "type": 6
+        },
+        {
+          "id": "4:300397525960617582",
+          "name": "overview",
+          "type": 9
+        },
+        {
+          "id": "5:367454378109584618",
+          "name": "backdrop_path",
+          "type": 9
+        },
+        {
+          "id": "6:3319245170612152835",
+          "name": "poster_path",
+          "type": 9
+        },
+        {
+          "id": "7:1770435456904272190",
+          "name": "releaseDate",
+          "type": 10
+        },
+        {
+          "id": "8:1481993032393935565",
+          "name": "voteAverage",
+          "type": 8
+        },
+        {
+          "id": "9:4463603936234519179",
+          "name": "originalTitle",
+          "type": 9
+        },
+        {
+          "id": "10:8975079690861483840",
+          "name": "originalLanguage",
+          "type": 9
+        },
+        {
+          "id": "11:4089277704294389074",
+          "name": "voteCount",
+          "type": 8
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:7944992303359968328",
+      "lastPropertyId": "11:5539750002196181453",
+      "name": "UpcomingEntityModel",
+      "properties": [
+        {
+          "id": "1:5471334279873166002",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4941236068900220113",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "3:815033775695506968",
+          "name": "movieId",
+          "type": 6
+        },
+        {
+          "id": "4:7890742060966646899",
+          "name": "overview",
+          "type": 9
+        },
+        {
+          "id": "5:8793746336940184312",
+          "name": "poster_path",
+          "type": 9
+        },
+        {
+          "id": "6:734988412077832136",
+          "name": "releaseDate",
+          "type": 10
+        },
+        {
+          "id": "7:6292690710660152279",
+          "name": "voteAverage",
+          "type": 8
+        },
+        {
+          "id": "8:7036035621210895323",
+          "name": "originalTitle",
+          "type": 9
+        },
+        {
+          "id": "9:3855097797704553446",
+          "name": "originalLanguage",
+          "type": 9
+        },
+        {
+          "id": "10:1822797447248693020",
+          "name": "voteCount",
+          "type": 8
+        },
+        {
+          "id": "11:5539750002196181453",
+          "name": "backdrop_path",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:7944992303359968328",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

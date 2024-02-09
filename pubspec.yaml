@@ -25,16 +25,21 @@ dependencies:
   json_annotation: ^4.8.1
   image_picker: ^1.0.7
   cloud_firestore: ^4.14.0
+  objectbox: ^2.4.0
+  objectbox_flutter_libs: any
+  path_provider: ^2.1.2
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
   riverpod_generator: ^2.3.9
-  build_runner: ^2.4.7
+  build_runner: ^2.4.8
   custom_lint: ^0.5.7
   riverpod_lint: ^2.3.7
   freezed: ^2.4.6
+  objectbox_generator: any
 
 flutter:
   uses-material-design: true

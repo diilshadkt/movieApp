@@ -1,22 +1,24 @@
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/utils/snackbar.dart';
 import 'package:movie_app/features/feature2/data/repository/comment_repository_impl.dart';
 import 'package:movie_app/features/feature2/data/repository/firebase_repository_impl.dart';
 import 'package:movie_app/features/feature2/data/repository/movie_repository_impl.dart';
+import 'package:movie_app/features/feature2/data/repository/objectbox_repository_impl.dart';
 import 'package:movie_app/features/feature2/domain/entities/comment_entity.dart';
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/feature2/domain/repository/comment_repository.dart';
 import 'package:movie_app/features/feature2/domain/repository/movie_repository.dart';
 import 'package:movie_app/features/feature2/domain/usecases/add_comment_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/delete_comment_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/get_comment_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/add_to_firebase_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/delete_to_firebase_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/get_from_firebase_usecase.dart';
 import 'package:movie_app/features/feature2/domain/usecases/movie_usecases.dart';
 import 'package:movie_app/features/feature2/domain/usecases/search_movie_usecase.dart';
+import 'package:movie_app/features/feature2/domain/usecases/upcoming_movie_usecase.dart';
 import 'package:movie_app/features/feature2/presentation/providers/provider_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -32,6 +34,10 @@ class GetMovies extends _$GetMovies {
   Future<ProviderState> build() async {
     return ProviderState(
         movies: await MovieUsecases(
+            localrepo: ref.watch(objectBoxRepositoryProvider),
+            repository: ref.watch(movieRepositoryProvider))(),
+        upcomingMovies: await UpcomingMovieUsecases(
+            localrepo: ref.watch(objectBoxRepositoryProvider),
             repository: ref.watch(movieRepositoryProvider))(),
         search: null);
   }
@@ -61,6 +67,11 @@ class GetMovies extends _$GetMovies {
   Stream<List<CommentEntity>> getComment(String id) {
     final repository = ref.watch(commentRepositoryProvider);
     return GetCommentUsecase(repository: repository)(id);
+  }
+
+  Future<void> deleteComment(String id) async {
+    final repository = ref.watch(commentRepositoryProvider);
+    return DeleteCommentUsecase(repository: repository)(id);
   }
 
   //search

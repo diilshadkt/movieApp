@@ -22,6 +22,27 @@ class MovieRepositoryImpl implements MovieRepository {
             originalTitle: result.originalTitle,
             overview: result.overview,
             posterPath: result.posterPath ?? "no image",
+            backdropPath: result.backdropPath ?? "no poster",
+            title: result.title,
+            voteAverage: result.voteAverage,
+            language: result.originalLanguage,
+            releaseDate: result.releaseDate),
+    ];
+    return results;
+  }
+
+  @override
+  Future<List<MovieEntity>> upcomingMovies() async {
+    final data = await datasource.upcomingMovies();
+    late List<MovieEntity> results;
+    results = [
+      for (var result in data.results)
+        MovieEntity(
+            id: result.id,
+            originalTitle: result.originalTitle,
+            overview: result.overview,
+            posterPath: result.posterPath ?? "no image",
+            backdropPath: result.backdropPath ?? "no poster",
             title: result.title,
             voteAverage: result.voteAverage,
             language: result.originalLanguage,
@@ -41,6 +62,7 @@ class MovieRepositoryImpl implements MovieRepository {
             originalTitle: result.originalTitle,
             overview: result.overview,
             posterPath: result.posterPath ?? 'no image',
+            backdropPath: result.backdropPath ?? "no poster",
             title: result.title,
             voteAverage: result.voteAverage,
             language: result.originalLanguage,

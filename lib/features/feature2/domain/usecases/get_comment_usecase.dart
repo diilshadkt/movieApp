@@ -8,7 +8,8 @@ class GetCommentUsecase {
 
   Stream<List<CommentEntity>> call(String id) {
     try {
-      return repository.getComment(id);
+      final comments = repository.getComment(id);
+      return comments;
     } catch (e) {
       throw BaseException(e.toString());
     }

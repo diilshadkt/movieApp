@@ -16,7 +16,12 @@ class CommentDatasourceImpl implements CommentDatasource {
 
   @override
   Stream<QuerySnapshot<CommentModel>> getComment(String movieId) {
-    return db.where("movieId", isEqualTo: movieId).snapshots();
+    return db.where("MovieId", isEqualTo: movieId).snapshots();
+  }
+
+  @override
+  Future<void> deleteComment(String id) async {
+    await db.doc(id).delete();
   }
 }
 

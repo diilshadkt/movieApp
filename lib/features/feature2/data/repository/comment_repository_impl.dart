@@ -28,6 +28,11 @@ class CommentRepositoryImpl implements CommentRepository {
       ];
     }
   }
+
+  @override
+  Future<void> deleteComment(String id) async {
+    await datasource.deleteComment(id);
+  }
 }
 
 @riverpod

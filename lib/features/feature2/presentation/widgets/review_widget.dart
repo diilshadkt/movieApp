@@ -22,7 +22,7 @@ class ReviewWidget extends ConsumerWidget {
             builder: (BuildContext context) {
               return Container(
                 height: MediaQuery.sizeOf(context).height / 2,
-                color: Colors.yellow,
+                color: Colors.white,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -52,22 +52,31 @@ class ReviewWidget extends ConsumerWidget {
                         ),
                         StreamBuilder(
                           stream: ref
-                              .watch(getMoviesProvider.notifier)
+                              .read(getMoviesProvider.notifier)
                               .getComment(entity.id.toString()),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
                               return Container(
-                                color: Colors.amber,
+                                color: Colors.white,
                                 height: 300,
                                 child: ListView.builder(
                                   itemCount: snapshot.data!.length,
                                   itemBuilder: (context, index) => Card(
-                                    color: Colors.amber,
+                                    color: Colors.white,
                                     child: ListTile(
-                                      title: Text(snapshot.data![index].text),
+                                      title: Text(
+                                        snapshot.data![index].text,
+                                        style: TextStyle(color: Colors.black),
+                                      ),
                                       leading: Text("${index + 1}"),
                                       trailing: IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            ref
+                                                .read(
+                                                    getMoviesProvider.notifier)
+                                                .deleteComment(
+                                                    entity.id.toString());
+                                          },
                                           icon: Icon(Icons.delete)),
                                     ),
                                   ),

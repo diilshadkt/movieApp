@@ -8,6 +8,7 @@ class MovieEntity with _$MovieEntity {
     required String originalTitle,
     required String overview,
     required String posterPath,
+    required String backdropPath,
     required String title,
     required DateTime releaseDate,
     required String language,

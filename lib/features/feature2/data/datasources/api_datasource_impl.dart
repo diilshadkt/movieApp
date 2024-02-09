@@ -13,8 +13,7 @@ class ApiDatasourceImpl implements ApiDatasource {
   @override
   Future<MovieModel> getMovies() async {
     dio.options.headers["Authorization"] = "Bearer $token";
-    Response response = await dio.get(
-        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-Us&page=1&sort_by=popularity.desc");
+    Response response = await dio.get(ApiConstants.getMoviesLink);
     return MovieModel.fromJson(response.data);
   }
 
@@ -30,6 +29,13 @@ class ApiDatasourceImpl implements ApiDatasource {
     } on Exception {
       throw BaseException("error was occured");
     }
+  }
+
+  @override
+  Future<MovieModel> upcomingMovies() async {
+    dio.options.headers["Autherization"] = "Bearer$token";
+    Response response = await dio.get(ApiConstants.upcomingMovieLink);
+    return MovieModel.fromJson(response.data);
   }
 }
 

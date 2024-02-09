@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/theme/themes/app_theme.dart';
 import 'package:movie_app/features/feature2/domain/entities/movie_entity.dart';
@@ -17,6 +19,16 @@ class GridViewWidget extends StatelessWidget {
           mainAxisExtent: 336),
       itemCount: movieList.length,
       itemBuilder: (context, index) {
+        final posterPathFile = File(movieList[index].posterPath);
+
+        final ImageProvider image;
+        if (posterPathFile.existsSync()) {
+          image = FileImage(posterPathFile);
+        } else {
+          image = NetworkImage(
+            imagePath + movieList[index].posterPath,
+          );
+        }
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
@@ -27,10 +39,7 @@ class GridViewWidget extends StatelessWidget {
                 height: MediaQuery.sizeOf(context).height / 2.97,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                      image:
-                          NetworkImage(imagePath + movieList[index].posterPath),
-                      fit: BoxFit.fill),
+                  image: DecorationImage(image: image, fit: BoxFit.fill),
                 ),
               ),
               Padding(

@@ -20,6 +20,7 @@ mixin _$MovieEntity {
   String get originalTitle => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   String get posterPath => throw _privateConstructorUsedError;
+  String get backdropPath => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get releaseDate => throw _privateConstructorUsedError;
   String get language => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $MovieEntityCopyWith<$Res> {
       String originalTitle,
       String overview,
       String posterPath,
+      String backdropPath,
       String title,
       DateTime releaseDate,
       String language,
@@ -64,6 +66,7 @@ class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
     Object? originalTitle = null,
     Object? overview = null,
     Object? posterPath = null,
+    Object? backdropPath = null,
     Object? title = null,
     Object? releaseDate = null,
     Object? language = null,
@@ -85,6 +88,10 @@ class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
       posterPath: null == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      backdropPath: null == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -119,6 +126,7 @@ abstract class _$$MovieEntityImplCopyWith<$Res>
       String originalTitle,
       String overview,
       String posterPath,
+      String backdropPath,
       String title,
       DateTime releaseDate,
       String language,
@@ -140,6 +148,7 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
     Object? originalTitle = null,
     Object? overview = null,
     Object? posterPath = null,
+    Object? backdropPath = null,
     Object? title = null,
     Object? releaseDate = null,
     Object? language = null,
@@ -161,6 +170,10 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
       posterPath: null == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      backdropPath: null == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -190,6 +203,7 @@ class _$MovieEntityImpl implements _MovieEntity {
       required this.originalTitle,
       required this.overview,
       required this.posterPath,
+      required this.backdropPath,
       required this.title,
       required this.releaseDate,
       required this.language,
@@ -204,6 +218,8 @@ class _$MovieEntityImpl implements _MovieEntity {
   @override
   final String posterPath;
   @override
+  final String backdropPath;
+  @override
   final String title;
   @override
   final DateTime releaseDate;
@@ -214,7 +230,7 @@ class _$MovieEntityImpl implements _MovieEntity {
 
   @override
   String toString() {
-    return 'MovieEntity(id: $id, originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, title: $title, releaseDate: $releaseDate, language: $language, voteAverage: $voteAverage)';
+    return 'MovieEntity(id: $id, originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, backdropPath: $backdropPath, title: $title, releaseDate: $releaseDate, language: $language, voteAverage: $voteAverage)';
   }
 
   @override
@@ -229,6 +245,8 @@ class _$MovieEntityImpl implements _MovieEntity {
                 other.overview == overview) &&
             (identical(other.posterPath, posterPath) ||
                 other.posterPath == posterPath) &&
+            (identical(other.backdropPath, backdropPath) ||
+                other.backdropPath == backdropPath) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.releaseDate, releaseDate) ||
                 other.releaseDate == releaseDate) &&
@@ -240,7 +258,7 @@ class _$MovieEntityImpl implements _MovieEntity {
 
   @override
   int get hashCode => Object.hash(runtimeType, id, originalTitle, overview,
-      posterPath, title, releaseDate, language, voteAverage);
+      posterPath, backdropPath, title, releaseDate, language, voteAverage);
 
   @JsonKey(ignore: true)
   @override
@@ -255,6 +273,7 @@ abstract class _MovieEntity implements MovieEntity {
       required final String originalTitle,
       required final String overview,
       required final String posterPath,
+      required final String backdropPath,
       required final String title,
       required final DateTime releaseDate,
       required final String language,
@@ -268,6 +287,8 @@ abstract class _MovieEntity implements MovieEntity {
   String get overview;
   @override
   String get posterPath;
+  @override
+  String get backdropPath;
   @override
   String get title;
   @override

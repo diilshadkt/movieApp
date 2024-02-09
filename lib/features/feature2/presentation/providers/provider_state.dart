@@ -6,6 +6,7 @@ part 'provider_state.freezed.dart';
 class ProviderState with _$ProviderState {
   factory ProviderState({
     required List<MovieEntity> movies,
+    required List<MovieEntity> upcomingMovies,
     required List<MovieEntity>? search,
   }) = _ProviderState;
 }

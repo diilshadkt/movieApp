@@ -70,9 +70,7 @@ class SearchPage extends ConsumerWidget {
                         data: (data) {
                           final search = data.search;
                           if (search == null) {
-                            return const Align(
-                              child: Text('Search here'),
-                            );
+                            return const Align();
                           } else {
                             return Padding(
                               padding:

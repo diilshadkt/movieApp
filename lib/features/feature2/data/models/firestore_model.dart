@@ -6,16 +6,19 @@ part 'firestore_model.g.dart';
 @freezed
 class FireStoreModel with _$FireStoreModel {
   const FireStoreModel._();
+
   factory FireStoreModel({
     required int id,
     required String originalTitle,
     required String overview,
     required String posterPath,
+    required String backdropPath,
     required String title,
     required DateTime releaseDate,
     required String language,
     required double voteAverage,
   }) = _FireStoreModel;
+
   factory FireStoreModel.fromJson(Map<String, dynamic> json) =>
       _$FireStoreModelFromJson(json);
 
@@ -26,6 +29,7 @@ class FireStoreModel with _$FireStoreModel {
     final data = snapshot.data()!;
     return FireStoreModel.fromJson(data);
   }
+
   Map<String, dynamic> toFirestore() {
     return toJson();
   }
